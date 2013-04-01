@@ -34,8 +34,10 @@ def checkio(data):
     meta = linea(punto(xw1,yw1),punto(xw2,yw2))
     bala = linea(punto(xa,ya),punto(xb,yb))
     resultado = meta.intersecta(bala)
-    print (resultado)
-    return (resultado.x <= xw1 and resultado.x <= yw1 and resultado.y <= xw2 and resultado.y <= yw2)
+    print ('------',resultado)
+    print ('x: ',xw1,'<=',resultado.x,'<=',xw2,'-->',(xw1 <= resultado.x and resultado.x <= xw2))
+    print ('y: ',yw1,'<=',resultado.y,'<=',yw2,'-->',(yw1 <= resultado.y  and resultado.y <= yw2))
+    return ((xw1 <= resultado.x and resultado.x <= xw2) and (yw1 <= resultado.y  and resultado.y <= yw2))
 
     
     
@@ -44,10 +46,10 @@ def checkio(data):
 if __name__=="__main__":
     l1 =linea(punto(0,0),punto(2,2))
     l2 =linea(punto(6,0),punto(3,1))  
-    print (l1,l2)
-    print (l1.intersecta(l2))
+    #print (l1,l2)
+    #print (l1.intersecta(l2))
     assert checkio([[0,0], [0,2], [5,1], [3,1]]) == True, "First"
-#    assert checkio([[0, 0], [0, 2], [3, 1], [5, 1]]) == False, "Reverse First"
+    assert checkio([[0, 0], [0, 2], [3, 1], [5, 1]]) == False, "Reverse First"
     assert checkio([[0, 0], [2, 2], [6, 0], [3, 1]]) == True, "Second"
     assert checkio([[6, 0], [5, 5], [4, 0], [5, 6]]) == False, "Third"
     assert checkio([[0, 0], [1, 1], [3, 3], [2, 2]]) == True, "Fourth, shot in butt of wall :)"
